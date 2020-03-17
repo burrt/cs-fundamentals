@@ -19,3 +19,25 @@ jobs:
       run: |
         chmod +x gradlew
         ./gradlew test
+
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+
+    - name: Install useful Python packages
+      run: pip install pipenv
+
+    - name: Setup Python venv and install Python dependencies
+      working-directory: ./src/languages/python/sorts
+      run: |
+        python -m venv venv
+        source venv/bin/activate
+        pipenv install
+
+    - name: Running Python sorts tests
+      working-directory: ./src/languages/python/sorts
+      run: |
+        source venv/bin/activate
+        pytest -v
