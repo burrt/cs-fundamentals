@@ -71,7 +71,7 @@ jobs:
       name: Build C projects
       run: |
         echo "Building hash table and doubly linked list"
-        cd ./src/languages/c/hash_table
+        cd ./src/c/hash_table
         make ht
         make dlinkedlist
         echo "Building C searches"
@@ -81,14 +81,14 @@ jobs:
     - if: matrix.language == 'java'
       name: Build Java projects
       run: |
-        cd ./src/languages/java/sorts
+        cd ./src/java/sorts
         chmod +x gradlew
         ./gradlew build
 
     - if: matrix.language == 'python'
       name: Build Python projects
       run: |
-        cd ./src/languages/python
+        cd ./src/python
         python -m compileall .
 
 
