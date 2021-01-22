@@ -17,7 +17,7 @@ namespace DataStructure.Tests.List
 
         [Theory]
         [InlineData(1)]
-        [InlineData(2)]
+        [InlineData(5)]
         public void Size_WithNonEmptyList_ReturnsGreaterThanZero(int nodesToAdd)
         {
             ISinglyLinkedList<int> singlyLinkedList = new SinglyLinkedList<int>();

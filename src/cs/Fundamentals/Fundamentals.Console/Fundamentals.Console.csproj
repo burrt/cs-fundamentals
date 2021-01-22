@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyName>Fundamentals.Cmd</AssemblyName>
+    <RootNamespace>Fundamentals.Cmd</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DataStructures\DataStructure.csproj" />
+    <ProjectReference Include="..\Fundamentals\Fundamentals.csproj" />
+  </ItemGroup>
+
+</Project>
