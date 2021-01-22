@@ -1,34 +1,97 @@
-﻿using Fundamentals.Core;
+﻿using System;
+using Fundamentals.Core;
 using Fundamentals.DataStructure.List;
 
 namespace DataStructure.List
 {
     public class SinglyLinkedList<T> : ISinglyLinkedList<T>
     {
-        public ISinglyLinkedListNode<T> Head { get; set; }
+        private ISinglyLinkedListNode<T> Head { get; set; }
+        private ISinglyLinkedListNode<T> Tail { get; set; }
+        private int ListSize;
 
         public SinglyLinkedList()
         {
-            Head = null;
+            ListSize = 0;
         }
 
-        public SinglyLinkedList(ISinglyLinkedListNode<T> head)
-        {
-            Head = head ?? null;
-        }
-
-        public ISinglyLinkedListNode<T> Append(ISinglyLinkedListNode<T> node)
+        public SinglyLinkedList(ISinglyLinkedListNode<T> node)
         {
             Guard.IsNotNull(node, nameof(node));
 
-            if (Head == null)
+            Head = node;
+            Tail = node;
+            ListSize++;
+        }
+
+        public int Size() => ListSize;
+
+        public bool IsEmpty()
+        {
+            if (ListSize < 0)
+            {
+                throw new InvalidOperationException("List size is less than zero.");
+            }
+
+            return ListSize == 0;
+        }
+
+        public ISinglyLinkedListNode<T> GetFirst()
+        {
+            if (IsEmpty())
+            {
+                throw new InvalidOperationException("List is empty.");
+            }
+
+            return Head;
+        }
+
+        public ISinglyLinkedListNode<T> GetLast()
+        {
+            if (IsEmpty())
+            {
+                throw new InvalidOperationException("List is empty.");
+            }
+
+            return Tail;
+        }
+
+        public ISinglyLinkedListNode<T> AddLast(ISinglyLinkedListNode<T> node)
+        {
+            Guard.IsNotNull(node, nameof(node));
+
+            if (IsEmpty())
             {
                 Head = node;
+                Tail = node;
             }
             else
             {
-                Head.Next = node;
+                Tail.Next = node;
+                Tail = node;
             }
+
+            ListSize++;
+
+            return node;
+        }
+
+        public ISinglyLinkedListNode<T> AddFirst(ISinglyLinkedListNode<T> node)
+        {
+            Guard.IsNotNull(node, nameof(node));
+            
+            if (IsEmpty())
+            {
+                Head = node;
+                Tail = node;
+            }
+            else
+            {
+                node.Next = Head;
+                Head = node;
+            }
+
+            ListSize++;
 
             return node;
         }
