@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Fundamentals.Core;
 using Fundamentals.DataStructure.List;
 
@@ -92,6 +92,34 @@ namespace DataStructure.List
             }
 
             ListSize++;
+
+            return node;
+        }
+
+        public ISinglyLinkedListNode<T> RemoveFirst()
+        {
+            if (IsEmpty())
+            {
+                throw new InvalidOperationException("List is empty.");
+            }
+
+            var node = Head;
+            Head = Head.Next;
+            ListSize--;
+
+            return node;
+        }
+
+        public ISinglyLinkedListNode<T> RemoveLast()
+        {
+            if (IsEmpty())
+            {
+                throw new InvalidOperationException("List is empty.");
+            }
+
+            var node = Tail;
+            Tail = Tail.Next;
+            ListSize--;
 
             return node;
         }

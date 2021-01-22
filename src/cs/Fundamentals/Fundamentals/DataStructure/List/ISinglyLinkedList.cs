@@ -1,4 +1,4 @@
-﻿namespace Fundamentals.DataStructure.List
+namespace Fundamentals.DataStructure.List
 {
     public interface ISinglyLinkedList<T>
     {
@@ -8,6 +8,7 @@
         public ISinglyLinkedListNode<T> GetLast();
         public ISinglyLinkedListNode<T> AddLast(ISinglyLinkedListNode<T> node);
         public ISinglyLinkedListNode<T> AddFirst(ISinglyLinkedListNode<T> node);
-
+        public ISinglyLinkedListNode<T> RemoveFirst();
+        public ISinglyLinkedListNode<T> RemoveLast();
     }
 }

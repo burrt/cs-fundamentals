@@ -1,4 +1,4 @@
-﻿using DataStructure.List;
+using DataStructure.List;
 using System;
 using Fundamentals.DataStructure.List;
 using Xunit;
@@ -8,7 +8,7 @@ namespace DataStructure.Tests.List
     public class SinglyLinkedListTests
     {
         [Fact]
-        public void Size_WithEmptyList_ReturnsZero()
+        public void Size_ForEmptyList_ReturnsZero()
         {
             ISinglyLinkedList<int> singlyLinkedList = new SinglyLinkedList<int>();
 
@@ -18,7 +18,7 @@ namespace DataStructure.Tests.List
         [Theory]
         [InlineData(1)]
         [InlineData(5)]
-        public void Size_WithNonEmptyList_ReturnsGreaterThanZero(int nodesToAdd)
+        public void Size_ForNonEmptyList_ReturnsGreaterThanZero(int nodesToAdd)
         {
             ISinglyLinkedList<int> singlyLinkedList = new SinglyLinkedList<int>();
 
@@ -31,7 +31,7 @@ namespace DataStructure.Tests.List
         }
 
         [Fact]
-        public void IsEmpty_WithEmptyList_ReturnsTrue()
+        public void IsEmpty_ForEmptyList_ReturnsTrue()
         {
             ISinglyLinkedList<int> singlyLinkedList = new SinglyLinkedList<int>();
             
@@ -39,7 +39,7 @@ namespace DataStructure.Tests.List
         }
 
         [Fact]
-        public void IsEmpty_WithNonEmptyList_ReturnsFalse()
+        public void IsEmpty_ForNonEmptyList_ReturnsFalse()
         {
              ISinglyLinkedList<int> singlyLinkedList = new SinglyLinkedList<int>(new SinglyLinkedListNode<int>(1));
 
@@ -47,7 +47,7 @@ namespace DataStructure.Tests.List
         }
 
         [Fact]
-        public void GetFirst_WithEmptyList_ThrowsException()
+        public void GetFirst_ForEmptyList_ThrowsException()
         {
             ISinglyLinkedList<int> singlyLinkedList = new SinglyLinkedList<int>();
 
@@ -55,7 +55,7 @@ namespace DataStructure.Tests.List
         }
 
         [Fact]
-        public void GetFirst_WithNonEmptyList_Success()
+        public void GetFirst_ForNonEmptyList_Success()
         {
             ISinglyLinkedList<int> singlyLinkedList = new SinglyLinkedList<int>(new SinglyLinkedListNode<int>(1));
 
@@ -65,7 +65,7 @@ namespace DataStructure.Tests.List
         }
 
         [Fact]
-        public void GetLast_WithEmptyList_ThrowsException()
+        public void GetLast_ForEmptyList_ThrowsException()
         {
             ISinglyLinkedList<int> singlyLinkedList = new SinglyLinkedList<int>();
 
@@ -73,7 +73,7 @@ namespace DataStructure.Tests.List
         }
 
         [Fact]
-        public void GetLast_WithNonEmptyList_Success()
+        public void GetLast_ForNonEmptyList_Success()
         {
             ISinglyLinkedList<int> singlyLinkedList = new SinglyLinkedList<int>(new SinglyLinkedListNode<int>(1));
 
@@ -161,5 +161,44 @@ namespace DataStructure.Tests.List
             Assert.Equal(-1, singlyLinkedList.GetLast().Value);
         }
 
+        [Fact]
+        public void RemoveFirst_ForEmptyList_ThrowsException()
+        {
+            ISinglyLinkedList<int> singlyLinkedList = new SinglyLinkedList<int>();
+
+            Assert.ThrowsAny<Exception>(() => singlyLinkedList.RemoveFirst());
+        }
+
+        [Fact]
+        public void RemoveFirst_ForNonEmptyList_Success()
+        {
+            ISinglyLinkedList<int> singlyLinkedList = new SinglyLinkedList<int>();
+            singlyLinkedList.AddFirst(new SinglyLinkedListNode<int>(1));
+
+            var item = singlyLinkedList.RemoveFirst();
+
+            Assert.Equal(1, item.Value);
+            Assert.True(singlyLinkedList.IsEmpty());
+        }
+
+        [Fact]
+        public void RemoveLast_ForEmptyList_ThrowsException()
+        {
+            ISinglyLinkedList<int> singlyLinkedList = new SinglyLinkedList<int>();
+
+            Assert.ThrowsAny<Exception>(() => singlyLinkedList.RemoveLast());
+        }
+
+        [Fact]
+        public void RemoveLast_ForNonEmptyList_Success()
+        {
+            ISinglyLinkedList<int> singlyLinkedList = new SinglyLinkedList<int>();
+            singlyLinkedList.AddFirst(new SinglyLinkedListNode<int>(1));
+
+            var item = singlyLinkedList.RemoveLast();
+
+            Assert.Equal(1, item.Value);
+            Assert.True(singlyLinkedList.IsEmpty());
+        }
     }
 }
