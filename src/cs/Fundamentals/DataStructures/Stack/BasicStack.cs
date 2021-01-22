@@ -60,6 +60,7 @@ namespace DataStructure.Stack
 
             var item = Top;
             Top = Top.Next;
+            stackSize--;
 
             return item;
         }

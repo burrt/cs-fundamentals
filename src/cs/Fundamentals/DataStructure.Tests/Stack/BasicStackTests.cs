@@ -28,6 +28,18 @@ namespace DataStructure.Tests.Stack
         }
 
         [Fact]
+        public void Size_ForNonEmptyStackAfterPushAndPop_Success()
+        {
+            IBasicStack<int> stack = new BasicStack<int>();
+            stack.Push(new StackNode<int>(1));
+            stack.Push(new StackNode<int>(2));
+            stack.Push(new StackNode<int>(3));
+            stack.Pop();
+
+            Assert.Equal(2, stack.Size());
+        }
+
+        [Fact]
         public void IsEmpty_ForEmptyStack_ReturnsTrue()
         {
             IBasicStack<int> stack = new BasicStack<int>();
