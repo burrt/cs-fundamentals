@@ -1,8 +1,7 @@
-using Fundamentals.DataStructure.Stack;
 using System;
 using Fundamentals.Core;
 
-namespace DataStructure.Stack
+namespace Fundamentals.DataStructure.Stack
 {
     public class BasicStack<T> : IBasicStack<T>
     {

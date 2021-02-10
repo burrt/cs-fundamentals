@@ -1,9 +1,8 @@
 using System;
-using DataStructure.Stack;
 using Fundamentals.DataStructure.Stack;
 using Xunit;
 
-namespace DataStructure.Tests.Stack
+namespace Fundamentals.Tests.Stack
 {
     public class BasicStackTests
     {

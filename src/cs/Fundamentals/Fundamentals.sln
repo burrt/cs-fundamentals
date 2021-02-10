@@ -7,9 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fundamentals", "Fundamental
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sort", "Sorts\Sort.csproj", "{1649185B-453E-4730-A70B-BCA3C7D29919}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataStructure", "DataStructures\DataStructure.csproj", "{3B9B6598-94C2-4293-96E3-EC8CBD36804B}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataStructure.Tests", "DataStructure.Tests\DataStructure.Tests.csproj", "{E263F7C9-81E3-4162-802B-4A298FDC02B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fundamentals.Tests", "Fundamentals.Tests\Fundamentals.Tests.csproj", "{E263F7C9-81E3-4162-802B-4A298FDC02B3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{03189A5C-B335-418B-A44D-A5D06457A316}"
 	ProjectSection(SolutionItems) = preProject
@@ -17,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fundamentals.Console", "Fundamentals.Console\Fundamentals.Console.csproj", "{C7BCBC22-B91A-418C-AD01-EB115F2ABB1A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fundamentals.Console", "Fundamentals.Console\Fundamentals.Console.csproj", "{C7BCBC22-B91A-418C-AD01-EB115F2ABB1A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,10 +31,6 @@ Global
 		{1649185B-453E-4730-A70B-BCA3C7D29919}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1649185B-453E-4730-A70B-BCA3C7D29919}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1649185B-453E-4730-A70B-BCA3C7D29919}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3B9B6598-94C2-4293-96E3-EC8CBD36804B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3B9B6598-94C2-4293-96E3-EC8CBD36804B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3B9B6598-94C2-4293-96E3-EC8CBD36804B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3B9B6598-94C2-4293-96E3-EC8CBD36804B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E263F7C9-81E3-4162-802B-4A298FDC02B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E263F7C9-81E3-4162-802B-4A298FDC02B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E263F7C9-81E3-4162-802B-4A298FDC02B3}.Release|Any CPU.ActiveCfg = Release|Any CPU

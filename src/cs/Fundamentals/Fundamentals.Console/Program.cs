@@ -1,5 +1,8 @@
 using System;
-using DataStructure.List;
+using System.Collections.Generic;
+using System.Linq;
+using Fundamentals.DataStructure.List;
+using Fundamentals.DataStructure.Tree;
 
 namespace Fundamentals.Cmd
 {
@@ -8,21 +11,6 @@ namespace Fundamentals.Cmd
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World");
-
-            var list = new SinglyLinkedList<int>();
-
-            for (int i = 0; i < 10; i++)
-            {
-                list.AddLast(new SinglyLinkedListNode<int>(i));
-            }
-
-            var curr = list.GetFirst();
-            while (curr != null)
-            {
-                Console.WriteLine(curr.Value);
-                curr = curr.Next;
-            }
-
         }
     }
 }

@@ -1,6 +1,4 @@
-using Fundamentals.DataStructure.Stack;
-
-namespace DataStructure.Stack
+namespace Fundamentals.DataStructure.Stack
 {
     public class StackNode<T> : IStackNode<T>
     {

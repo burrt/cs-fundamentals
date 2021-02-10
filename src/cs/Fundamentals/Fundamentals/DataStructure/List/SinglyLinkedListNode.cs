@@ -1,6 +1,4 @@
-﻿using Fundamentals.DataStructure.List;
-
-namespace DataStructure.List
+﻿namespace Fundamentals.DataStructure.List
 {
     public class SinglyLinkedListNode<T> : ISinglyLinkedListNode<T>
     {

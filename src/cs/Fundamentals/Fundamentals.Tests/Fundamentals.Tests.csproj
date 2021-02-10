@@ -4,6 +4,10 @@
     <TargetFramework>net5.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <AssemblyName>Fundamentals.Tests</AssemblyName>
+
+    <RootNamespace>Fundamentals.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,7 +25,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DataStructures\DataStructure.csproj" />
     <ProjectReference Include="..\Fundamentals\Fundamentals.csproj" />
   </ItemGroup>
 

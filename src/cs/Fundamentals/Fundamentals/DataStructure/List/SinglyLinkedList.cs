@@ -1,8 +1,7 @@
 using System;
 using Fundamentals.Core;
-using Fundamentals.DataStructure.List;
 
-namespace DataStructure.List
+namespace Fundamentals.DataStructure.List
 {
     public class SinglyLinkedList<T> : ISinglyLinkedList<T>
     {
@@ -21,7 +20,7 @@ namespace DataStructure.List
 
             Head = node;
             Tail = node;
-            ListSize++;
+            ListSize = 1;
         }
 
         public int Size() => ListSize;

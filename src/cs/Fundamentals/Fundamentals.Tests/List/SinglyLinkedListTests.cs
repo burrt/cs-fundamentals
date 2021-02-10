@@ -1,9 +1,8 @@
-using DataStructure.List;
 using System;
 using Fundamentals.DataStructure.List;
 using Xunit;
 
-namespace DataStructure.Tests.List
+namespace Fundamentals.Tests.List
 {
     public class SinglyLinkedListTests
     {
@@ -34,7 +33,7 @@ namespace DataStructure.Tests.List
         public void IsEmpty_ForEmptyList_ReturnsTrue()
         {
             ISinglyLinkedList<int> singlyLinkedList = new SinglyLinkedList<int>();
-            
+
             Assert.True(singlyLinkedList.IsEmpty());
         }
 
