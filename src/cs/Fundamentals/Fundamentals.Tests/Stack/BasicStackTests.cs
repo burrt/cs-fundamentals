@@ -20,7 +20,7 @@ namespace Fundamentals.Tests.Stack
             IBasicStack<int> stack = new BasicStack<int>();
             for (var i = 0; i < 3; i++)
             {
-                stack.Push(new StackNode<int>(i));
+                stack.Push(i);
             }
 
             Assert.Equal(3, stack.Size());
@@ -30,9 +30,9 @@ namespace Fundamentals.Tests.Stack
         public void Size_ForNonEmptyStackAfterPushAndPop_Success()
         {
             IBasicStack<int> stack = new BasicStack<int>();
-            stack.Push(new StackNode<int>(1));
-            stack.Push(new StackNode<int>(2));
-            stack.Push(new StackNode<int>(3));
+            stack.Push(1);
+            stack.Push(2);
+            stack.Push(3);
             stack.Pop();
 
             Assert.Equal(2, stack.Size());
@@ -52,46 +52,38 @@ namespace Fundamentals.Tests.Stack
             IBasicStack<int> stack = new BasicStack<int>();
             for (var i = 0; i < 3; i++)
             {
-                stack.Push(new StackNode<int>(i));
+                stack.Push(i);
             }
 
             Assert.False(stack.IsEmpty());
         }
 
         [Fact]
-        public void Push_WithNullNode_ThrowsException()
+        public void Push_WithValidValue_Success()
         {
             IBasicStack<int> stack = new BasicStack<int>();
 
-            Assert.ThrowsAny<Exception>(() => stack.Push(null));
-        }
-
-        [Fact]
-        public void Push_WithValidItem_Success()
-        {
-            IBasicStack<int> stack = new BasicStack<int>();
-
-            stack.Push(new StackNode<int>(1));
+            stack.Push(1);
 
             Assert.Equal(1, stack.Size());
         }
 
         [Fact]
-        public void Peek_ForEmptyStack_ReturnsNull()
+        public void Peek_ForEmptyStack_ThrowsException()
         {
             IBasicStack<int> stack = new BasicStack<int>();
 
-            Assert.Null(stack.Peek());
+            Assert.ThrowsAny<Exception>(() => stack.Peek());
         }
 
         [Fact]
         public void Peek_ForNonEmptyStack_Success()
         {
-            IBasicStack<int> stack = new BasicStack<int>(new StackNode<int>(1));
+            IBasicStack<int> stack = new BasicStack<int>(1);
 
-            var item = stack.Peek();
+            var itemValue = stack.Peek();
 
-            Assert.Equal(1, item.Value);
+            Assert.Equal(1, itemValue);
         }
 
         [Fact]
@@ -108,12 +100,12 @@ namespace Fundamentals.Tests.Stack
             IBasicStack<int> stack = new BasicStack<int>();
             for (var i = 0; i < 3; i++)
             {
-                stack.Push(new StackNode<int>(i));
+                stack.Push(i);
             }
 
-            var item = stack.Pop();
+            var itemValue = stack.Pop();
 
-            Assert.Equal(2, item.Value);
+            Assert.Equal(2, itemValue);
         }
     }
 }

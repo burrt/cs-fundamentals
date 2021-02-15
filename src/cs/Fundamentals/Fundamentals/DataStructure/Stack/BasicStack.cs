@@ -1,22 +1,20 @@
 using System;
-using Fundamentals.Core;
 
 namespace Fundamentals.DataStructure.Stack
 {
     public class BasicStack<T> : IBasicStack<T>
     {
-        private IStackNode<T> Top { get; set; }
         private int stackSize;
+        private IStackNode<T> Top { get; set; }
 
         public BasicStack()
         {
             stackSize = 0;
         }
 
-        public BasicStack(IStackNode<T> item)
+        public BasicStack(T value)
         {
-            Guard.IsNotNull(item, nameof(item));
-
+            var item = new StackNode<T>(value);
             Top = item;
             stackSize = 1;
         }
@@ -25,7 +23,7 @@ namespace Fundamentals.DataStructure.Stack
         {
             if (stackSize < 0)
             {
-                throw new InvalidOperationException("stackSize is less than zero.");
+                throw new InvalidOperationException("Stack size is less than zero.");
             }
 
             return stackSize;
@@ -35,22 +33,24 @@ namespace Fundamentals.DataStructure.Stack
         {
             if (stackSize < 0)
             {
-                throw new InvalidOperationException("stackSize is less than zero.");
+                throw new InvalidOperationException("Stack size is less than zero.");
             }
 
             return stackSize == 0;
         }
 
-        public void Push(IStackNode<T> item)
+        public void Push(T value)
         {
-            Guard.IsNotNull(item, nameof(item));
+            var item = new StackNode<T>(value)
+            {
+                Next = Top
+            };
 
-            item.Next = Top;
             Top = item;
             stackSize++;
         }
 
-        public IStackNode<T> Pop()
+        public T Pop()
         {
             if (IsEmpty())
             {
@@ -61,12 +61,17 @@ namespace Fundamentals.DataStructure.Stack
             Top = Top.Next;
             stackSize--;
 
-            return item;
+            return item.Value;
         }
 
-        public IStackNode<T> Peek()
+        public T Peek()
         {
-            return Top;
+            if (IsEmpty())
+            {
+                throw new InvalidOperationException("Stack is empty.");
+            }
+
+            return Top.Value;
         }
     }
 }

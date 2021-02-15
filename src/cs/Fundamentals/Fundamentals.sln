@@ -13,9 +13,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
+		Dockerfile = Dockerfile
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fundamentals.Console", "Fundamentals.Console\Fundamentals.Console.csproj", "{C7BCBC22-B91A-418C-AD01-EB115F2ABB1A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fundamentals.Cmd", "Fundamentals.Cmd\Fundamentals.Cmd.csproj", "{C7BCBC22-B91A-418C-AD01-EB115F2ABB1A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

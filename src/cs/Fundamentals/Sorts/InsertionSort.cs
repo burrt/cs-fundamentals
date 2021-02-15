@@ -1,24 +1,33 @@
 using System;
+using Fundamentals.Core.Guards;
+using Fundamentals.Sorts;
 
-namespace Sort
+namespace Sorts
 {
-    public class InsertionSort
+    public class InsertionSort<T> : ISort<T> where T : IComparable, IComparable<T>
     {
-        public void Sort(int[] a)
+        public void Sort(T[] array)
         {
-            for (var i = 1; i < a.Length; i++)
+            Guard.IsNotNull(array, nameof(array));
+
+            if (array.Length == 0 || array.Length == 1)
             {
-                for (var j = i; j> 0; j--)
+                return;
+            }
+
+            for (int i = 1; i < array.Length; i++)
+            {
+                for (int k = i; k > 0; k--)
                 {
-                    if (a[j] < a[j - 1])
+                    if (array[k].CompareTo(array[k - 1]) < 0)
                     {
-                        Swap(a, j, j - 1);
+                        Swap(array, k, k - 1);
                     }
                 }
             }
         }
 
-        private void Swap(int[] a, int x, int y)
+        private void Swap(T[] a, int x, int y)
         {
             var temp = a[x];
             a[x] = a[y];

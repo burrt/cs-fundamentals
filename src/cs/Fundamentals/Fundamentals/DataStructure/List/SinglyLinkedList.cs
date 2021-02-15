@@ -1,63 +1,62 @@
 using System;
-using Fundamentals.Core;
 
 namespace Fundamentals.DataStructure.List
 {
     public class SinglyLinkedList<T> : ISinglyLinkedList<T>
     {
+        private int listSize;
         private ISinglyLinkedListNode<T> Head { get; set; }
         private ISinglyLinkedListNode<T> Tail { get; set; }
-        private int ListSize;
 
         public SinglyLinkedList()
         {
-            ListSize = 0;
+            listSize = 0;
         }
 
-        public SinglyLinkedList(ISinglyLinkedListNode<T> node)
+        public SinglyLinkedList(T value)
         {
-            Guard.IsNotNull(node, nameof(node));
+            var node = new SinglyLinkedListNode<T>(value);
 
             Head = node;
             Tail = node;
-            ListSize = 1;
+            listSize = 1;
         }
 
-        public int Size() => ListSize;
+        public int Size() => listSize;
 
         public bool IsEmpty()
         {
-            if (ListSize < 0)
+            if (listSize < 0)
             {
                 throw new InvalidOperationException("List size is less than zero.");
             }
 
-            return ListSize == 0;
+            return listSize == 0;
         }
 
-        public ISinglyLinkedListNode<T> GetFirst()
+        public T GetFirst()
         {
             if (IsEmpty())
             {
                 throw new InvalidOperationException("List is empty.");
             }
 
-            return Head;
+            return Head.Value;
         }
 
-        public ISinglyLinkedListNode<T> GetLast()
+        public T GetLast()
         {
             if (IsEmpty())
             {
                 throw new InvalidOperationException("List is empty.");
             }
 
-            return Tail;
+            return Tail.Value;
         }
 
-        public ISinglyLinkedListNode<T> AddLast(ISinglyLinkedListNode<T> node)
+        public void AddLast(T value)
         {
-            Guard.IsNotNull(node, nameof(node));
+            var node = new SinglyLinkedListNode<T>(value);
 
             if (IsEmpty())
             {
@@ -70,14 +69,12 @@ namespace Fundamentals.DataStructure.List
                 Tail = node;
             }
 
-            ListSize++;
-
-            return node;
+            listSize++;
         }
 
-        public ISinglyLinkedListNode<T> AddFirst(ISinglyLinkedListNode<T> node)
+        public void AddFirst(T value)
         {
-            Guard.IsNotNull(node, nameof(node));
+            var node = new SinglyLinkedListNode<T>(value);
             
             if (IsEmpty())
             {
@@ -90,12 +87,10 @@ namespace Fundamentals.DataStructure.List
                 Head = node;
             }
 
-            ListSize++;
-
-            return node;
+            listSize++;
         }
 
-        public ISinglyLinkedListNode<T> RemoveFirst()
+        public T RemoveFirst()
         {
             if (IsEmpty())
             {
@@ -104,12 +99,12 @@ namespace Fundamentals.DataStructure.List
 
             var node = Head;
             Head = Head.Next;
-            ListSize--;
+            listSize--;
 
-            return node;
+            return node.Value;
         }
 
-        public ISinglyLinkedListNode<T> RemoveLast()
+        public T RemoveLast()
         {
             if (IsEmpty())
             {
@@ -118,9 +113,9 @@ namespace Fundamentals.DataStructure.List
 
             var node = Tail;
             Tail = Tail.Next;
-            ListSize--;
+            listSize--;
 
-            return node;
+            return node.Value;
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Fundamentals.Core
+namespace Fundamentals.Core.Guards
 {
     public static class Guard
     {

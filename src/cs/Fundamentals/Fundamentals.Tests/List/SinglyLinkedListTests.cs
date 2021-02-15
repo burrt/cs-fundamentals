@@ -23,7 +23,7 @@ namespace Fundamentals.Tests.List
 
             for (var i = 0; i < nodesToAdd; i++)
             {
-                singlyLinkedList.AddLast(new SinglyLinkedListNode<int>(i));
+                singlyLinkedList.AddLast(i);
             }
 
             Assert.Equal(nodesToAdd, singlyLinkedList.Size());
@@ -40,7 +40,7 @@ namespace Fundamentals.Tests.List
         [Fact]
         public void IsEmpty_ForNonEmptyList_ReturnsFalse()
         {
-             ISinglyLinkedList<int> singlyLinkedList = new SinglyLinkedList<int>(new SinglyLinkedListNode<int>(1));
+            ISinglyLinkedList<int> singlyLinkedList = new SinglyLinkedList<int>(1);
 
             Assert.False(singlyLinkedList.IsEmpty());
         }
@@ -56,11 +56,11 @@ namespace Fundamentals.Tests.List
         [Fact]
         public void GetFirst_ForNonEmptyList_Success()
         {
-            ISinglyLinkedList<int> singlyLinkedList = new SinglyLinkedList<int>(new SinglyLinkedListNode<int>(1));
+            ISinglyLinkedList<int> singlyLinkedList = new SinglyLinkedList<int>(1);
 
-            var resultNode = singlyLinkedList.GetFirst();
+            var resultValue = singlyLinkedList.GetFirst();
 
-            Assert.Equal(1, resultNode.Value);
+            Assert.Equal(1, resultValue);
         }
 
         [Fact]
@@ -74,90 +74,66 @@ namespace Fundamentals.Tests.List
         [Fact]
         public void GetLast_ForNonEmptyList_Success()
         {
-            ISinglyLinkedList<int> singlyLinkedList = new SinglyLinkedList<int>(new SinglyLinkedListNode<int>(1));
+            ISinglyLinkedList<int> singlyLinkedList = new SinglyLinkedList<int>(1);
 
-            var resultNode = singlyLinkedList.GetLast();
+            var resultValue = singlyLinkedList.GetLast();
 
-            Assert.Equal(1, resultNode.Value);
-        }
-
-        [Fact]
-        public void AddLast_WithNullNode_ThrowsException()
-        {
-            ISinglyLinkedList<int> singlyLinkedList = new SinglyLinkedList<int>();
-
-            Assert.ThrowsAny<Exception>(() => singlyLinkedList.AddLast(null));
+            Assert.Equal(1, resultValue);
         }
 
         [Theory]
         [InlineData(0)]
         [InlineData(1)]
         [InlineData(10)]
-        public void AddLast_WithValidNodeToEmptyList_Success(int nodeValue)
+        public void AddLast_ToEmptyList_Success(int nodeValue)
         {
             ISinglyLinkedList<int> singlyLinkedList = new SinglyLinkedList<int>();
-            var node = new SinglyLinkedListNode<int>(nodeValue);
 
-            var n = singlyLinkedList.AddLast(node);
+            singlyLinkedList.AddLast(nodeValue);
 
-            Assert.Equal(nodeValue, n.Value);
-            Assert.Equal(nodeValue, singlyLinkedList.GetFirst().Value);
+            Assert.Equal(nodeValue, singlyLinkedList.GetLast());
         }
 
         [Theory]
         [InlineData(0)]
         [InlineData(1)]
         [InlineData(10)]
-        public void AddLast_WithValidNodeToNonEmptyList_Success(int nodeValue)
+        public void AddLast_ToNonEmptyList_Success(int nodeValue)
         {
-            ISinglyLinkedList<int> singlyLinkedList = new SinglyLinkedList<int>(new SinglyLinkedListNode<int>(-1));
-            var node = new SinglyLinkedListNode<int>(nodeValue);
+            ISinglyLinkedList<int> singlyLinkedList = new SinglyLinkedList<int>(-1);
 
-            var n = singlyLinkedList.AddLast(node);
+            singlyLinkedList.AddLast(nodeValue);
 
-            Assert.Equal(nodeValue, n.Value);
-            Assert.Equal(-1, singlyLinkedList.GetFirst().Value);
-            Assert.Equal(nodeValue, singlyLinkedList.GetLast().Value);
-        }
-
-        [Fact]
-        public void AddFirst_WithNullNode_ThrowsException()
-        {
-            ISinglyLinkedList<int> singlyLinkedList = new SinglyLinkedList<int>();
-
-            Assert.ThrowsAny<Exception>(() => singlyLinkedList.AddFirst(null));
+            Assert.Equal(-1, singlyLinkedList.GetFirst());
+            Assert.Equal(nodeValue, singlyLinkedList.GetLast());
         }
 
         [Theory]
         [InlineData(0)]
         [InlineData(1)]
         [InlineData(10)]
-        public void AddFirst_WithValidNodeToEmptyList_Success(int nodeValue)
+        public void AddFirst_ToEmptyList_Success(int nodeValue)
         {
             ISinglyLinkedList<int> singlyLinkedList = new SinglyLinkedList<int>();
-            var node = new SinglyLinkedListNode<int>(nodeValue);
 
-            var n = singlyLinkedList.AddFirst(node);
+            singlyLinkedList.AddFirst(nodeValue);
 
-            Assert.Equal(nodeValue, n.Value);
-            Assert.Equal(nodeValue, singlyLinkedList.GetFirst().Value);
-            Assert.Equal(nodeValue, singlyLinkedList.GetLast().Value);
+            Assert.Equal(nodeValue, singlyLinkedList.GetFirst());
+            Assert.Equal(nodeValue, singlyLinkedList.GetLast());
         }
 
         [Theory]
         [InlineData(0)]
         [InlineData(1)]
         [InlineData(10)]
-        public void AddFirst_WithValidNodeToNonEmptyList_Success(int nodeValue)
+        public void AddFirst_ToNonEmptyList_Success(int nodeValue)
         {
-            ISinglyLinkedList<int> singlyLinkedList = new SinglyLinkedList<int>(new SinglyLinkedListNode<int>(-1));
-            var node = new SinglyLinkedListNode<int>(nodeValue);
+            ISinglyLinkedList<int> singlyLinkedList = new SinglyLinkedList<int>(-1);
 
-            var n = singlyLinkedList.AddFirst(node);
+            singlyLinkedList.AddFirst(nodeValue);
 
-            Assert.Equal(nodeValue, n.Value);
-            Assert.Equal(nodeValue, singlyLinkedList.GetFirst().Value);
-            Assert.Equal(-1, singlyLinkedList.GetLast().Value);
+            Assert.Equal(nodeValue, singlyLinkedList.GetFirst());
+            Assert.Equal(-1, singlyLinkedList.GetLast());
         }
 
         [Fact]
@@ -172,11 +148,11 @@ namespace Fundamentals.Tests.List
         public void RemoveFirst_ForNonEmptyList_Success()
         {
             ISinglyLinkedList<int> singlyLinkedList = new SinglyLinkedList<int>();
-            singlyLinkedList.AddFirst(new SinglyLinkedListNode<int>(1));
+            singlyLinkedList.AddFirst(1);
 
-            var item = singlyLinkedList.RemoveFirst();
+            var value = singlyLinkedList.RemoveFirst();
 
-            Assert.Equal(1, item.Value);
+            Assert.Equal(1, value);
             Assert.True(singlyLinkedList.IsEmpty());
         }
 
@@ -192,11 +168,11 @@ namespace Fundamentals.Tests.List
         public void RemoveLast_ForNonEmptyList_Success()
         {
             ISinglyLinkedList<int> singlyLinkedList = new SinglyLinkedList<int>();
-            singlyLinkedList.AddFirst(new SinglyLinkedListNode<int>(1));
+            singlyLinkedList.AddFirst(1);
 
-            var item = singlyLinkedList.RemoveLast();
+            var itemValue = singlyLinkedList.RemoveLast();
 
-            Assert.Equal(1, item.Value);
+            Assert.Equal(1, itemValue);
             Assert.True(singlyLinkedList.IsEmpty());
         }
     }

@@ -4,11 +4,11 @@ namespace Fundamentals.DataStructure.List
     {
         public bool IsEmpty();
         public int Size();
-        public ISinglyLinkedListNode<T> GetFirst();
-        public ISinglyLinkedListNode<T> GetLast();
-        public ISinglyLinkedListNode<T> AddLast(ISinglyLinkedListNode<T> node);
-        public ISinglyLinkedListNode<T> AddFirst(ISinglyLinkedListNode<T> node);
-        public ISinglyLinkedListNode<T> RemoveFirst();
-        public ISinglyLinkedListNode<T> RemoveLast();
+        public T GetFirst();
+        public T GetLast();
+        public void AddLast(T value);
+        public void AddFirst(T value);
+        public T RemoveFirst();
+        public T RemoveLast();
     }
 }
